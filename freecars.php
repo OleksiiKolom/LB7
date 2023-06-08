@@ -1,6 +1,6 @@
 <?php
 include("connect.php");
-$date = $_GET["FreeCars"];
+$date = $_GET["freecars"];
 
 try {
     $sqlSelect = "SELECT * FROM cars WHERE ID_Cars NOT IN (SELECT FID_Car FROM rent WHERE Date_start <= :date AND Date_end >= :date)";

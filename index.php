@@ -1,7 +1,5 @@
-<!-- "Варіант 6" -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +7,7 @@
     <title>Rent</title>
 
     <script>
-        function rentOfDate(url, callback, format) {
+        function rentofdate(url, callback, format) {
             const ajax = new XMLHttpRequest();
             ajax.onreadystatechange = function() {
                 if (ajax.readyState === 4 && ajax.status === 200) {
@@ -22,19 +20,17 @@
             ajax.open('GET', url);
             ajax.send();
         }
-
         function rent() {
-            const costRent = document.getElementById('costRent').value;
-            rentOfDate('RentOfDate.php?costRent=' + costRent,
+            const costrent = document.getElementById('costrent').value;
+            rentofdate('rent.php?costrent=' + costrent,
                 function(response) {
                     console.log(response);
-                    document.getElementById('res1').innerHTML = response;
-                },
-                'json');
+                    document.getElementById('resultOfFirstHandler1').innerHTML = response;
+                },'json');
         }
     </script>
     <script>
-        function vendorCars(url, callback, format) {
+        function vendorcars(url, callback, format) {
             const ajax = new XMLHttpRequest();
             ajax.onreadystatechange = function() {
                 if (ajax.readyState === 4 && ajax.status === 200) {
@@ -50,7 +46,7 @@
 
         function ven() {
             const vendor = document.getElementById('vendor').value;
-            vendorCars('VendorCars.php?vendor=' + vendor,
+            vendorcars('VendorCars.php?vendor=' + vendor,
                 function(response) {
                     console.log(response);
 
@@ -67,9 +63,9 @@
     </script>
 
     <script>
-        function FreeCars() {
+        function freecars() {
             const ajax = new XMLHttpRequest();
-            const FreeCarsValue = document.getElementById("FreeCars").value;
+            const freecarsValue = document.getElementById("freecars").value;
 
             ajax.onreadystatechange = function() {
                 if (ajax.readyState === 4) {
@@ -80,7 +76,7 @@
                 }
             };
 
-            ajax.open("GET", "FreeCars.php?FreeCars=" + FreeCarsValue);
+            ajax.open("GET", "freecars.php?freecars=" + freecarsValue);
             ajax.send();
         }
     </script>
@@ -89,7 +85,7 @@
 
 <body>
     <h2>Отриманий дохід з прокату станом на обрану дату</h2>
-    <select name="costRent" id="costRent">
+    <select name="costrent" id="costrent">
         <?php
         include("connect.php");
 
@@ -104,7 +100,7 @@
     </select>
     <input type="button" value="Результат" onclick="rent()">
     <table border='1'>
-        <tbody id="res1"></tbody>
+        <tbody id="resultOfFirstHandler1"></tbody>
     </table>
     <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
@@ -130,7 +126,7 @@
     <!---------------------------------------------------------------------------------------------------------------------------->
 
     <h2>Вільні автомобілі на обрану дату</h2>
-    <select name="FreeCars" id="FreeCars">
+    <select name="freecars" id="freecars">
         <?php
         include("connect.php");
 
@@ -143,7 +139,7 @@
         }
         ?>
     </select>
-    <input type="button" value="Результат" onclick="FreeCars()">
+    <input type="button" value="Результат" onclick="freecars()">
     <table border='1'>
         <thead>
             <tr>

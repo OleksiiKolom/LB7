@@ -1,11 +1,11 @@
 <?php
 include("connect.php");
-$costRent = $_GET["costRent"];
+$costrent = $_GET["costrent"];
 
 try {
-    $sqlSelect = "SELECT Date_start, Date_end, Cost FROM rent WHERE Date_end = :costRent";
+    $sqlSelect = "SELECT Date_start, Date_end, Cost FROM rent WHERE Date_end = :costrent";
     $sth = $dbh->prepare($sqlSelect);
-    $sth->bindValue(":costRent", $costRent);
+    $sth->bindValue(":costrent", $costrent);
     $sth->execute();
     $res = $sth->fetchAll(PDO::FETCH_ASSOC);
     
